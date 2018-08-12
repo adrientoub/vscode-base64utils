@@ -1,0 +1,73 @@
+{
+    "name": "base64utils",
+    "displayName": "Base64 Utils",
+    "description": "Some utilities to edit text from and to base64. Also able to gzip-base64 and gunzip-base64.",
+    "version": "1.0.0",
+    "publisher": "adrientoub",
+    "engines": {
+        "vscode": "^1.25.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.Base64",
+        "onCommand:extension.Base64D",
+        "onCommand:extension.GzipBase64",
+        "onCommand:extension.GunzipBase64"
+    ],
+    "main": "./out/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.Base64",
+                "title": "Base64: change text to base64."
+            },
+            {
+                "command": "extension.Base64D",
+                "title": "Base64: change text from base64."
+            },
+            {
+                "command": "extension.GzipBase64",
+                "title": "Gzip: Base64: Gzip-base64"
+            },
+            {
+                "command": "extension.GunzipBase64",
+                "title": "Gzip: Base64: Gunzip-b64"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "extension.Base64"
+                },
+                {
+                    "command": "extension.Base64D"
+                },
+                {
+                    "command": "extension.GzipBase64"
+                },
+                {
+                    "command": "extension.GunzipBase64"
+                }
+            ]
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run compile",
+        "compile": "tsc -p ./",
+        "watch": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "npm run compile && node ./node_modules/vscode/bin/test"
+    },
+    "dependencies": {
+        "gzip-js": "0.3.2"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "tslint": "^5.8.0",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    }
+}
