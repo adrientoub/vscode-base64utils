@@ -4,6 +4,10 @@
     "description": "Some utilities to edit text from and to base64. Also able to gzip-base64 and gunzip-base64.",
     "version": "1.0.0",
     "publisher": "adrientoub",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/adrientoub/vscode-base64utils"
+    },
     "engines": {
         "vscode": "^1.25.0"
     },
