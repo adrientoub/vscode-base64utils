@@ -2,7 +2,7 @@
     "name": "base64utils",
     "displayName": "Base64 Utils",
     "description": "Some utilities to edit text from and to base64. Also able to gzip-base64 and gunzip-base64.",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "publisher": "adrientoub",
     "repository": {
         "type": "git",
@@ -18,7 +18,8 @@
         "onCommand:extension.Base64",
         "onCommand:extension.Base64D",
         "onCommand:extension.GzipBase64",
-        "onCommand:extension.GunzipBase64"
+        "onCommand:extension.GunzipBase64",
+        "onCommand:extension.OpenInNewTab"
     ],
     "main": "./out/extension",
     "contributes": {
@@ -38,6 +39,10 @@
             {
                 "command": "extension.GunzipBase64",
                 "title": "Gzip: Base64: Gunzip-b64"
+            },
+            {
+                "command": "extension.OpenInNewTab",
+                "title": "Open selection in new tab."
             }
         ],
         "menus": {
@@ -53,6 +58,9 @@
                 },
                 {
                     "command": "extension.GunzipBase64"
+                },
+                {
+                    "command": "extension.OpenInNewTab"
                 }
             ]
         }
