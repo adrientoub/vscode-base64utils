@@ -1,4 +1,4 @@
-# Base64 Utils
+# Base64 Utils [![install count](https://img.shields.io/visual-studio-marketplace/i/adrientoub.base64utils.svg)](https://marketplace.visualstudio.com/items?itemName=adrientoub.base64utils)
 
 ## Features
 
