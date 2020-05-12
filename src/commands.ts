@@ -29,9 +29,9 @@ function gunzipB64(txt: string): string {
     throw new Error("Selected text is not base64.");
   }
 
-  let b64d = new Buffer(txt, "base64");
+  let b64d = Buffer.from(txt, "base64");
   let unzipped = gzip.unzip(b64d);
-  let unzippedBuffer = new Buffer(unzipped);
+  let unzippedBuffer = Buffer.from(unzipped);
   return unzippedBuffer.toString();
 }
 
@@ -44,7 +44,7 @@ function base64d(txt: string): string {
     throw new Error("Selected text is not base64.");
   }
 
-  return new Buffer(txt, "base64").toString();
+  return Buffer.from(txt, "base64").toString();
 }
 
 export function GunzipBase64() {
@@ -54,13 +54,13 @@ export function GunzipBase64() {
 export function GzipBase64() {
   changeText(txt => {
     let zipped = gzip.zip(txt);
-    let zippedBuffer = new Buffer(zipped);
+    let zippedBuffer = Buffer.from(zipped);
     return zippedBuffer.toString("base64");
   });
 }
 
 export function Base64() {
-  changeText(txt => new Buffer(txt).toString("base64"));
+  changeText(txt => Buffer.from(txt).toString("base64"));
 }
 
 export function Base64D() {
