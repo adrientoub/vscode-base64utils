@@ -18,3 +18,7 @@ Base64 and Base64 gzip if needed during the process.
 ## Known Issues
 
 See issues tab. Create an issue if you do not find yours.
+
+## Build locally
+
+Run `npm install` and `npm run compile`.
