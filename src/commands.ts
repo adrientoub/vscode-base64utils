@@ -1,5 +1,6 @@
 "use strict";
 import * as vscode from "vscode";
+var Buffer = require('buffer/').Buffer;
 var gzip = require("gzip-js");
 
 function changeText(f: (txt: string) => string): void {
