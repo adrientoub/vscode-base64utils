@@ -9,7 +9,7 @@
         "url": "https://github.com/adrientoub/vscode-base64utils"
     },
     "engines": {
-        "vscode": "^1.25.0"
+        "vscode": "^1.62.0"
     },
     "categories": [
         "Other"
@@ -67,7 +67,7 @@
         }
     },
     "scripts": {
-        "vscode:prepublish": "npm run compile",
+        "vscode:prepublish": "npm run compile && npm run compile-web",
         "compile": "tsc -p ./",
         "lint": "eslint -c .eslintrc.js --ext .ts src",
         "watch": "tsc -watch -p ./",
