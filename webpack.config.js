@@ -25,8 +25,8 @@ const webExtensionConfig = {
       // Webpack 5 no longer polyfills Node.js core modules automatically.
       // see https://webpack.js.org/configuration/resolve/#resolvefallback
       // for the list of Node.js core module polyfills.
-      assert: require.resolve('assert')
-    }
+      assert: require.resolve('assert'),
+    },
   },
   module: {
     rules: [
@@ -43,7 +43,8 @@ const webExtensionConfig = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      process: 'process/browser' // provide a shim for the global `process` variable
+      Buffer: [require.resolve("buffer/"), "Buffer"],
+      process: 'process/browser', // provide a shim for the global `process` variable
     })
   ],
   externals: {

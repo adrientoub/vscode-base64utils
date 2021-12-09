@@ -2,7 +2,7 @@
     "name": "base64utils",
     "displayName": "Base64 Utils",
     "description": "Some utilities to edit text from and to base64. Also able to gzip-base64 and gunzip-base64.",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "publisher": "adrientoub",
     "repository": {
         "type": "git",
