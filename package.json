@@ -27,11 +27,11 @@
         "commands": [
             {
                 "command": "extension.Base64",
-                "title": "Base64: change text to base64."
+                "title": "Base64: Encode"
             },
             {
                 "command": "extension.Base64D",
-                "title": "Base64: change text from base64."
+                "title": "Base64: Decode"
             },
             {
                 "command": "extension.GzipBase64",
@@ -43,7 +43,7 @@
             },
             {
                 "command": "extension.OpenInNewTab",
-                "title": "Open selection in new tab."
+                "title": "Open selection in new tab"
             }
         ],
         "menus": {
