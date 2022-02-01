@@ -1,5 +1,6 @@
 # Change Log
-
+## 1.2.2
+- Renamed context menu entries
 ## 1.2.1
 - Fix extension when used in normal VS Code.
 
