@@ -1,5 +1,8 @@
 # Change Log
 
+## 1.2.3
+- Add an icon to the extension
+
 ## 1.2.2
 - Renamed context menu entries
 
