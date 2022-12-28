@@ -25,33 +25,25 @@ function changeText(f: (txt: string) => string): void {
 }
 
 function gunzipB64(txt: string): string {
-  if (!isBase64(txt)) {
-    throw new Error("Selected text is not base64.");
-  }
-
-  let b64d = Buffer.from(txt, "base64");
+  let b64d = decodeBase64(txt);
   let unzipped = gzip.unzip(b64d);
   let unzippedBuffer = Buffer.from(unzipped);
   return unzippedBuffer.toString();
 }
 
-function isBase64(txt: string): boolean {
-  let fromToB64 = Buffer.from(txt, "base64").toString("base64");
-
-  // if the text does not end with an equal check if it's base64 but with the final equal signs removed
-  if (!txt.endsWith("=")) {
-    return fromToB64.replace(/={1,3}$/, "") === txt;
+function decodeBase64(txt: string): Buffer {
+  if (/^[a-zA-Z0-9+=/\n\r\t ]+$/.test(txt)) {
+    return Buffer.from(txt, "base64");
+  }
+  if (/^[a-zA-Z0-9%\n\r\t ]+$/.test(txt)) {
+    return Buffer.from(decodeURIComponent(txt), "base64");
   }
 
-  return fromToB64 === txt;
+  throw new Error("Selected text is not base64.");
 }
 
 function base64d(txt: string): string {
-  if (!isBase64(txt)) {
-    throw new Error("Selected text is not base64.");
-  }
-
-  return Buffer.from(txt, "base64").toString();
+  return decodeBase64(txt).toString();
 }
 
 export function GunzipBase64() {

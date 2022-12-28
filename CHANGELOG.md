@@ -1,8 +1,9 @@
 # Change Log
 
-## Unreleased
+## 1.2.4
 
 - Handle missing trailing equals in Base64 strings
+- Decode URI Encoded Base64 string correctly
 
 ## 1.2.3
 
