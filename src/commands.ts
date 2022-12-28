@@ -11,7 +11,7 @@ function changeText(f: (txt: string) => string): void {
   let e = vscode.window.activeTextEditor;
   let d = e.document;
   let sel = e.selections;
-  e.edit(function(edit) {
+  e.edit(function (edit) {
     // iterate through the selections
     for (var x = 0; x < sel.length; x++) {
       let txt: string = d.getText(new vscode.Range(sel[x].start, sel[x].end));
@@ -39,8 +39,8 @@ function isBase64(txt: string): boolean {
   let fromToB64 = Buffer.from(txt, "base64").toString("base64");
 
   // if the text does not end with an equal check if it's base64 but with the final equal signs removed
-  if (!txt.endsWith('=')) {
-    return fromToB64.replace(/={1,3}$/, '') === txt;
+  if (!txt.endsWith("=")) {
+    return fromToB64.replace(/={1,3}$/, "") === txt;
   }
 
   return fromToB64 === txt;
@@ -59,7 +59,7 @@ export function GunzipBase64() {
 }
 
 export function GzipBase64() {
-  changeText(txt => {
+  changeText((txt) => {
     let zipped = gzip.zip(txt);
     let zippedBuffer = Buffer.from(zipped);
     return zippedBuffer.toString("base64");
@@ -67,7 +67,7 @@ export function GzipBase64() {
 }
 
 export function Base64() {
-  changeText(txt => Buffer.from(txt).toString("base64"));
+  changeText((txt) => Buffer.from(txt).toString("base64"));
 }
 
 export function Base64D() {
@@ -97,16 +97,16 @@ export function OpenInNewTab(): void {
     } catch (e) {
       console.log("Not a Base64 text.");
     }
-    let options: {language?: string; content?: string} = {};
+    let options: { language?: string; content?: string } = {};
     try {
       txt = JSON.stringify(JSON.parse(txt), null, 2);
-      options.language = 'json';
+      options.language = "json";
     } catch (e) {
       console.log("Not a JSON.");
     }
     options.content = txt;
     vscode.workspace
       .openTextDocument(options)
-      .then(doc => vscode.window.showTextDocument(doc, { preview: false }));
+      .then((doc) => vscode.window.showTextDocument(doc, { preview: false }));
   }
 }

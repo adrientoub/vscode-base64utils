@@ -1,6 +1,12 @@
 "use strict";
 import * as vscode from "vscode";
-import { Base64, Base64D, GunzipBase64, GzipBase64, OpenInNewTab } from "./commands";
+import {
+  Base64,
+  Base64D,
+  GunzipBase64,
+  GzipBase64,
+  OpenInNewTab,
+} from "./commands";
 
 export function activate(context: vscode.ExtensionContext) {
   console.log("Extension Base64Utils launched.");
@@ -10,7 +16,7 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.commands.registerCommand("extension.Base64D", Base64D),
     vscode.commands.registerCommand("extension.GzipBase64", GzipBase64),
     vscode.commands.registerCommand("extension.GunzipBase64", GunzipBase64),
-    vscode.commands.registerCommand("extension.OpenInNewTab", OpenInNewTab),
+    vscode.commands.registerCommand("extension.OpenInNewTab", OpenInNewTab)
   );
 }
 

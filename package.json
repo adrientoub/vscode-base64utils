@@ -1,97 +1,98 @@
 {
-    "name": "base64utils",
-    "displayName": "Base64 Utils",
-    "description": "Some utilities to edit text from and to base64. Also able to gzip-base64 and gunzip-base64.",
-    "version": "1.2.3",
-    "publisher": "adrientoub",
-    "icon": "assets/icon.png",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/adrientoub/vscode-base64utils"
-    },
-    "engines": {
-        "vscode": "^1.62.0"
-    },
-    "categories": [
-        "Other"
+  "name": "base64utils",
+  "displayName": "Base64 Utils",
+  "description": "Some utilities to edit text from and to base64. Also able to gzip-base64 and gunzip-base64.",
+  "version": "1.2.3",
+  "publisher": "adrientoub",
+  "icon": "assets/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adrientoub/vscode-base64utils"
+  },
+  "engines": {
+    "vscode": "^1.62.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.Base64",
+    "onCommand:extension.Base64D",
+    "onCommand:extension.GzipBase64",
+    "onCommand:extension.GunzipBase64",
+    "onCommand:extension.OpenInNewTab"
+  ],
+  "main": "./out/extension",
+  "browser": "./dist/web/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.Base64",
+        "title": "Base64: Encode"
+      },
+      {
+        "command": "extension.Base64D",
+        "title": "Base64: Decode"
+      },
+      {
+        "command": "extension.GzipBase64",
+        "title": "Gzip: Base64: Gzip-base64"
+      },
+      {
+        "command": "extension.GunzipBase64",
+        "title": "Gzip: Base64: Gunzip-b64"
+      },
+      {
+        "command": "extension.OpenInNewTab",
+        "title": "Open selection in new tab"
+      }
     ],
-    "activationEvents": [
-        "onCommand:extension.Base64",
-        "onCommand:extension.Base64D",
-        "onCommand:extension.GzipBase64",
-        "onCommand:extension.GunzipBase64",
-        "onCommand:extension.OpenInNewTab"
-    ],
-    "main": "./out/extension",
-    "browser": "./dist/web/extension.js",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.Base64",
-                "title": "Base64: Encode"
-            },
-            {
-                "command": "extension.Base64D",
-                "title": "Base64: Decode"
-            },
-            {
-                "command": "extension.GzipBase64",
-                "title": "Gzip: Base64: Gzip-base64"
-            },
-            {
-                "command": "extension.GunzipBase64",
-                "title": "Gzip: Base64: Gunzip-b64"
-            },
-            {
-                "command": "extension.OpenInNewTab",
-                "title": "Open selection in new tab"
-            }
-        ],
-        "menus": {
-            "editor/context": [
-                {
-                    "command": "extension.Base64"
-                },
-                {
-                    "command": "extension.Base64D"
-                },
-                {
-                    "command": "extension.GzipBase64"
-                },
-                {
-                    "command": "extension.GunzipBase64"
-                },
-                {
-                    "command": "extension.OpenInNewTab"
-                }
-            ]
+    "menus": {
+      "editor/context": [
+        {
+          "command": "extension.Base64"
+        },
+        {
+          "command": "extension.Base64D"
+        },
+        {
+          "command": "extension.GzipBase64"
+        },
+        {
+          "command": "extension.GunzipBase64"
+        },
+        {
+          "command": "extension.OpenInNewTab"
         }
-    },
-    "scripts": {
-        "vscode:prepublish": "npm run compile && npm run compile-web",
-        "compile": "tsc -p ./",
-        "lint": "eslint -c .eslintrc.js --ext .ts src",
-        "watch": "tsc -watch -p ./",
-        "test": "npm run compile && node ./node_modules/vscode/bin/test",
-        "compile-web": "webpack",
-        "watch-web": "webpack --watch",
-        "package-web": "webpack --mode production --devtool hidden-source-map"
-    },
-    "dependencies": {
-        "gzip-js": "0.3.2"
-    },
-    "devDependencies": {
-        "@types/mocha": "^9.0.0",
-        "@types/node": "^16.11.7",
-        "@types/vscode": "^1.62.0",
-        "@typescript-eslint/eslint-plugin": "^5.3.1",
-        "@typescript-eslint/parser": "^5.3.1",
-        "@types/webpack-env": "^1.16.0",
-        "buffer": "^6.0.3",
-        "eslint": "^8.2.0",
-        "ts-loader": "^9.2.2",
-        "typescript": "^4.4.4",
-        "webpack": "^5.38.1",
-        "webpack-cli": "^4.7.0"
+      ]
     }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile && npm run compile-web",
+    "compile": "tsc -p ./",
+    "lint": "eslint -c .eslintrc.js --ext .ts src",
+    "watch": "tsc -watch -p ./",
+    "test": "npm run compile && node ./node_modules/vscode/bin/test",
+    "compile-web": "webpack",
+    "watch-web": "webpack --watch",
+    "package-web": "webpack --mode production --devtool hidden-source-map"
+  },
+  "dependencies": {
+    "gzip-js": "0.3.2"
+  },
+  "devDependencies": {
+    "@types/mocha": "^9.0.0",
+    "@types/node": "^16.11.7",
+    "@types/vscode": "^1.62.0",
+    "@types/webpack-env": "^1.16.0",
+    "@typescript-eslint/eslint-plugin": "^5.3.1",
+    "@typescript-eslint/parser": "^5.3.1",
+    "buffer": "^6.0.3",
+    "eslint": "^8.2.0",
+    "prettier": "2.8.1",
+    "ts-loader": "^9.2.2",
+    "typescript": "^4.4.4",
+    "webpack-cli": "^4.7.0",
+    "webpack": "^5.38.1"
+  }
 }

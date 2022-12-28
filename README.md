@@ -3,6 +3,7 @@
 ## Features
 
 Allows to transform selected text:
+
 - from Base64 to plain text
 - to Base64 from plain text
 - from Base64 gzipped content to plain text
