@@ -1,5 +1,8 @@
 # Change Log
 
+## Unreleased
+- Handle missing trailing equals in Base64 strings
+
 ## 1.2.3
 - Add an icon to the extension
 

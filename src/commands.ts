@@ -36,7 +36,14 @@ function gunzipB64(txt: string): string {
 }
 
 function isBase64(txt: string): boolean {
-  return Buffer.from(txt, "base64").toString("base64") === txt;
+  let fromToB64 = Buffer.from(txt, "base64").toString("base64");
+
+  // if the text does not end with an equal check if it's base64 but with the final equal signs removed
+  if (!txt.endsWith('=')) {
+    return fromToB64.replace(/={1,3}$/, '') === txt;
+  }
+
+  return fromToB64 === txt;
 }
 
 function base64d(txt: string): string {
