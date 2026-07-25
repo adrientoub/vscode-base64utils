@@ -1,5 +1,11 @@
 # Change Log
 
+## 1.3.0
+
+- Replace the unmaintained `gzip-js` dependency with `fflate`
+- Update the toolchain to TypeScript 6, ESLint 10 and Prettier 3
+- Require VS Code 1.75 or later
+
 ## 1.2.4
 
 - Handle missing trailing equals in Base64 strings
