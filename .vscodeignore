@@ -12,3 +12,14 @@ webpack.config.js
 .prettierrc.json
 .prettierignore
 **/*.vsix
+
+# The Node extension host resolves `require("fflate")` to lib/node.cjs, and the
+# web build is already bundled into dist/. The ESM and UMD builds, the type
+# declarations and the package docs are dead weight inside the VSIX.
+node_modules/fflate/esm/**
+node_modules/fflate/umd/**
+node_modules/fflate/**/*.d.ts
+node_modules/fflate/**/*.d.cts
+node_modules/fflate/**/*.d.mts
+node_modules/fflate/README.md
+node_modules/fflate/CHANGELOG.md
