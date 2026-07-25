@@ -76,9 +76,7 @@ export function OpenInNewTab(): void {
   const d = e.document;
   const sel = e.selections;
   for (let x = 0; x < sel.length; x++) {
-    let txt: string = d
-      .getText(new vscode.Range(sel[x].start, sel[x].end))
-      .trim();
+    let txt: string = d.getText(new vscode.Range(sel[x].start, sel[x].end)).trim();
     try {
       txt = gunzipB64(txt);
     } catch {
@@ -97,8 +95,6 @@ export function OpenInNewTab(): void {
       console.log("Not a JSON.");
     }
     options.content = txt;
-    vscode.workspace
-      .openTextDocument(options)
-      .then((doc) => vscode.window.showTextDocument(doc, { preview: false }));
+    vscode.workspace.openTextDocument(options).then((doc) => vscode.window.showTextDocument(doc, { preview: false }));
   }
 }
