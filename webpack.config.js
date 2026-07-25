@@ -18,15 +18,6 @@ const webExtensionConfig = {
   resolve: {
     mainFields: ["browser", "module", "main"], // look for `browser` entry point in imported node modules
     extensions: [".ts", ".js"], // support ts-files and js-files
-    alias: {
-      // provides alternate implementation for node module and source files
-    },
-    fallback: {
-      // Webpack 5 no longer polyfills Node.js core modules automatically.
-      // see https://webpack.js.org/configuration/resolve/#resolvefallback
-      // for the list of Node.js core module polyfills.
-      assert: require.resolve("assert"),
-    },
   },
   module: {
     rules: [
@@ -43,8 +34,8 @@ const webExtensionConfig = {
   },
   plugins: [
     new webpack.ProvidePlugin({
+      // `Buffer` is used for base64 conversion but is not a webworker global.
       Buffer: [require.resolve("buffer/"), "Buffer"],
-      process: "process/browser", // provide a shim for the global `process` variable
     }),
   ],
   externals: {

@@ -1,6 +1,6 @@
 "use strict";
 import * as vscode from "vscode";
-var gzip = require("gzip-js");
+import { gzipSync, gunzipSync } from "fflate";
 
 function changeText(f: (txt: string) => string): void {
   if (!vscode.window.activeTextEditor) {
@@ -8,13 +8,13 @@ function changeText(f: (txt: string) => string): void {
     return;
   }
 
-  let e = vscode.window.activeTextEditor;
-  let d = e.document;
-  let sel = e.selections;
+  const e = vscode.window.activeTextEditor;
+  const d = e.document;
+  const sel = e.selections;
   e.edit(function (edit) {
     // iterate through the selections
-    for (var x = 0; x < sel.length; x++) {
-      let txt: string = d.getText(new vscode.Range(sel[x].start, sel[x].end));
+    for (let x = 0; x < sel.length; x++) {
+      const txt: string = d.getText(new vscode.Range(sel[x].start, sel[x].end));
       try {
         edit.replace(sel[x], f(txt));
       } catch (e) {
@@ -25,9 +25,9 @@ function changeText(f: (txt: string) => string): void {
 }
 
 function gunzipB64(txt: string): string {
-  let b64d = decodeBase64(txt);
-  let unzipped = gzip.unzip(b64d);
-  let unzippedBuffer = Buffer.from(unzipped);
+  const b64d = decodeBase64(txt);
+  const unzipped = gunzipSync(b64d);
+  const unzippedBuffer = Buffer.from(unzipped);
   return unzippedBuffer.toString();
 }
 
@@ -52,8 +52,8 @@ export function GunzipBase64() {
 
 export function GzipBase64() {
   changeText((txt) => {
-    let zipped = gzip.zip(txt);
-    let zippedBuffer = Buffer.from(zipped);
+    const zipped = gzipSync(Buffer.from(txt));
+    const zippedBuffer = Buffer.from(zipped);
     return zippedBuffer.toString("base64");
   });
 }
@@ -72,28 +72,28 @@ export function OpenInNewTab(): void {
     return;
   }
 
-  let e = vscode.window.activeTextEditor;
-  let d = e.document;
-  let sel = e.selections;
-  for (var x = 0; x < sel.length; x++) {
+  const e = vscode.window.activeTextEditor;
+  const d = e.document;
+  const sel = e.selections;
+  for (let x = 0; x < sel.length; x++) {
     let txt: string = d
       .getText(new vscode.Range(sel[x].start, sel[x].end))
       .trim();
     try {
       txt = gunzipB64(txt);
-    } catch (e) {
+    } catch {
       console.log("Not a Gzip Base64 text.");
     }
     try {
       txt = base64d(txt);
-    } catch (e) {
+    } catch {
       console.log("Not a Base64 text.");
     }
-    let options: { language?: string; content?: string } = {};
+    const options: { language?: string; content?: string } = {};
     try {
       txt = JSON.stringify(JSON.parse(txt), null, 2);
       options.language = "json";
-    } catch (e) {
+    } catch {
       console.log("Not a JSON.");
     }
     options.content = txt;
